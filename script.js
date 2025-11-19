@@ -1,3 +1,6 @@
+// Game URL configuration - update this when you deploy your WebGL build
+const GAME_URL = "/game/"; // Change to external URL if hosting separately (e.g., "https://your-game.itch.io/gameoflife")
+
 const friendlyFormatter = new Intl.DateTimeFormat("en-GB", {
   day: "2-digit",
   month: "short",
@@ -13,6 +16,14 @@ if (lastUpdated) {
 const yearEl = document.getElementById("year");
 if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
+}
+
+// Update play game button URL
+const playGameBtn = document.getElementById("play-game-btn");
+if (playGameBtn) {
+  playGameBtn.href = GAME_URL;
+  // Note: If game folder doesn't exist yet, the link will show 404
+  // Build WebGL in Unity and deploy to /game/ folder to fix this
 }
 
 const slashDate = (date) => {

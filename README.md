@@ -37,6 +37,19 @@ After uploading:
 
 If you must self-host, transcode to H.264 MP4 with `ffmpeg`, store on a CDN (e.g., Cloudflare R2 + Stream Delivery), and update the `<video>` tag accordingly.
 
+## Making the Game Playable
+
+**See [DEPLOYMENT.md](./DEPLOYMENT.md) for complete instructions** on:
+- Hosting the static site (GitHub Pages, Netlify, Vercel)
+- Building and deploying the Unity WebGL game
+- Sharing with testers during development
+
+**Quick steps:**
+1. Build WebGL in Unity → Output to `game/` folder
+2. Deploy site to Netlify/GitHub Pages
+3. Update `GAME_URL` in `script.js` if hosting separately
+4. Share the URL with testers!
+
 ## Local Preview
 
 ```bash
