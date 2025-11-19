@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Follow the construction of Game of Life: weekly milestones, audio briefings, and video walkthroughs for both engineers and non-technical supporters."
+    />
+    <title>Game of Life · Build Tracker</title>
+    <link rel="preload" href="styles.css" as="style" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <a href="https://6x7.gr" class="nav-brand" aria-label="6x7.gr Home" target="_blank" rel="noopener noreferrer">6x7.gr</a>
+    </div>
+    <header class="hero" id="top">
+      <div class="hero__content">
+        <p class="eyebrow">gameoflife.6x7.gr</p>
+        <h1>Game of Life · Build Log</h1>
+        <p class="lead">
+          Plain-language updates for anyone following along. Scroll for milestones, audio notes,
+          and a giant dated log with every tweak we made.
+        </p>
+        <div class="hero__cta">
+          <a class="button primary" href="#log">Browse Daily Log</a>
+          <a class="button secondary" href="#media">Audio + Notes</a>
+        </div>
+        <ul class="stats">
+          <li>
+            <span class="label">Current Sprint</span>
+            <strong>Movement + Map Polish</strong>
+          </li>
+          <li>
+            <span class="label">Playable Build</span>
+            <strong>Pre-Alpha Prototype</strong>
+          </li>
+          <li>
+            <span class="label">Last Update</span>
+            <strong id="last-updated">19 Nov 2025</strong>
+          </li>
+        </ul>
+      </div>
+      <div class="hero__video">
+        <div class="video-wrapper">
+          <iframe
+            src="https://www.youtube.com/embed/cjRDWTtrzzo"
+            title="Game of Life Weekly Walkthrough"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <p class="video-hint">
+          Huge capture? Upload the 600&nbsp;MB .mov to YouTube, Vimeo, or Cloudflare Stream
+          and drop the embed link here so the page loads instantly for everyone.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section id="progress" class="panel">
+        <div>
+          <h2>Where We Are</h2>
+          <p>
+            The core simulation grid runs at 60 FPS with deterministic ticks. This
+            sprint focuses on builder UX, surface shaders, and audio cues. Non-programmers
+            can skim the summary, while engineers can expand each milestone to see
+            integration notes, blockers, and links to Unity scenes.
+          </p>
+        </div>
+        <div class="milestone-grid">
+          <article class="milestone">
+            <header>
+              <p class="label">Complete</p>
+              <h3>Simulation Core</h3>
+            </header>
+            <p>
+              Grid serialization, pattern import/export, and deterministic tick
+              manager verified across Windows/macOS builds.
+            </p>
+            <ul>
+              <li>✓ Burst-optimized neighbor scans</li>
+              <li>✓ Save slots synced to cloud</li>
+              <li>✓ Regression tests automated</li>
+            </ul>
+          </article>
+          <article class="milestone">
+            <header>
+              <p class="label">In Progress</p>
+              <h3>World Construction Layer</h3>
+            </header>
+            <p>
+              ProBuilder + Blender workflow for set dressing is live. Lighting pass is
+              gating final approval on the central plaza.
+            </p>
+            <ul>
+              <li>• 3D kitbash library tagged</li>
+              <li>• Shader variant trimming</li>
+              <li>• Awaiting UX sign-off</li>
+            </ul>
+          </article>
+          <article class="milestone">
+            <header>
+              <p class="label ghost">Next</p>
+              <h3>Playtestable Narrative Loop</h3>
+            </header>
+            <p>
+              Dialogue sequencing, quest save states, and localization pipeline land in
+              December to unlock public playtests.
+            </p>
+            <ul>
+              <li>○ Ink + Timeline integration</li>
+              <li>○ Subtitle skinning</li>
+              <li>○ Accessibility review</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="media" class="panel">
+        <div class="media-card audio">
+          <header>
+            <p class="label">Audio Log</p>
+            <h2>2-Min Dev Pulse</h2>
+            <p>
+              Quick spoken recap for partners on the move. Record on your phone, drop
+              the MP3 into <code>/media/</code>, and update the source below.
+            </p>
+          </header>
+          <audio controls preload="metadata">
+            <source
+              src="https://samplelib.com/lib/preview/mp3/sample-3s.mp3"
+              type="audio/mpeg"
+            />
+            Your browser does not support the audio element.
+          </audio>
+          <details>
+            <summary>Recording checklist</summary>
+            <ul>
+              <li>30-second hook: what changed since last log</li>
+              <li>1-minute detail: tech highlights for engineers</li>
+              <li>30-second wrap: risks + next milestone</li>
+            </ul>
+          </details>
+        </div>
+      </section>
+
+      <section id="log" class="panel log">
+        <header>
+          <p class="label">Daily Dated Log</p>
+          <h2>Every Build Note (Past 10 Days)</h2>
+          <p>
+            Short sentences people actually understand. Each line shows what changed plus a tiny parenthesis for the tech heads.
+          </p>
+        </header>
+        <div class="log-controls">
+          <p class="muted">Newest at the top · 200 entries stored · tap below for more</p>
+          <button class="button secondary" id="load-more">Show Older Entries</button>
+        </div>
+        <div id="log-list" class="log-list" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; <span id="year"></span> Game of Life · Studio 6x7</p>
+      <div class="footer__links">
+        <a href="#progress">Progress</a>
+        <a href="#media">Media</a>
+        <a href="#log">Logs</a>
+        <a href="https://github.com/philipposk/GameOfLife-Site" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
+
