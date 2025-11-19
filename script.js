@@ -377,13 +377,46 @@ const generatedLog = Array.from({ length: TOTAL_ENTRIES }, (_, idx) => {
 }).sort((a, b) => b.sortKey - a.sortKey);
 
 const logList = document.getElementById("log-list");
-const loadMoreBtn = document.getElementById("load-more");
 const INITIAL_BATCH = 40;
 const BATCH_SIZE = 40;
 let rendered = 0;
+let loadMoreBtn = null;
+
+const createLoadMoreButton = () => {
+  if (loadMoreBtn) return loadMoreBtn;
+  
+  loadMoreBtn = document.createElement("a");
+  loadMoreBtn.className = "load-more-link";
+  loadMoreBtn.href = "#";
+  loadMoreBtn.id = "load-more";
+  loadMoreBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    renderEntries(BATCH_SIZE);
+  });
+  
+  if (logList) {
+    logList.appendChild(loadMoreBtn);
+  }
+  
+  return loadMoreBtn;
+};
+
+const updateLoadMoreButton = () => {
+  if (!loadMoreBtn) return;
+  
+  if (rendered >= generatedLog.length) {
+    loadMoreBtn.textContent = "All entries visible";
+    loadMoreBtn.style.display = "none";
+  } else {
+    const remaining = generatedLog.length - rendered;
+    loadMoreBtn.textContent = `Show ${Math.min(remaining, BATCH_SIZE)} more entries`;
+    loadMoreBtn.style.display = "block";
+  }
+};
 
 const renderEntries = (count) => {
   if (!logList) return;
+  
   const slice = generatedLog.slice(rendered, rendered + count);
   slice.forEach((entry) => {
     const wrapper = document.createElement("article");
@@ -402,23 +435,10 @@ const renderEntries = (count) => {
   });
 
   rendered += slice.length;
-
-  if (!loadMoreBtn) {
-    return;
-  }
-
-  if (rendered >= generatedLog.length) {
-    loadMoreBtn.textContent = "All entries visible";
-    loadMoreBtn.disabled = true;
-  } else {
-    const remaining = generatedLog.length - rendered;
-    loadMoreBtn.textContent = `Show ${Math.min(remaining, BATCH_SIZE)} more entries`;
-  }
+  updateLoadMoreButton();
 };
 
 renderEntries(INITIAL_BATCH);
-
-if (loadMoreBtn) {
-  loadMoreBtn.addEventListener("click", () => renderEntries(BATCH_SIZE));
-}
+createLoadMoreButton();
+updateLoadMoreButton();
 

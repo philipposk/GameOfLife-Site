@@ -12,20 +12,21 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="container">
-      <a href="https://6x7.gr" class="nav-brand" aria-label="6x7.gr Home" target="_blank" rel="noopener noreferrer">6x7.gr</a>
-    </div>
+    <nav class="navbar">
+      <div class="container">
+        <a href="https://6x7.gr" class="nav-brand" aria-label="6x7.gr Home" target="_blank" rel="noopener noreferrer">6x7.gr</a>
+      </div>
+    </nav>
     <header class="hero" id="top">
       <div class="hero__content">
         <p class="eyebrow">gameoflife.6x7.gr</p>
         <h1>Game of Life · Build Log</h1>
         <p class="lead">
-          Plain-language updates for anyone following along. Scroll for milestones, audio notes,
+          Plain-language updates for anyone following along. Scroll for milestones
           and a giant dated log with every tweak we made.
         </p>
         <div class="hero__cta">
           <a class="button primary" href="#log">Browse Daily Log</a>
-          <a class="button secondary" href="#media">Audio + Notes</a>
         </div>
         <ul class="stats">
           <li>
@@ -118,34 +119,6 @@
         </div>
       </section>
 
-      <section id="media" class="panel">
-        <div class="media-card audio">
-          <header>
-            <p class="label">Audio Log</p>
-            <h2>2-Min Dev Pulse</h2>
-            <p>
-              Quick spoken recap for partners on the move. Record on your phone, drop
-              the MP3 into <code>/media/</code>, and update the source below.
-            </p>
-          </header>
-          <audio controls preload="metadata">
-            <source
-              src="https://samplelib.com/lib/preview/mp3/sample-3s.mp3"
-              type="audio/mpeg"
-            />
-            Your browser does not support the audio element.
-          </audio>
-          <details>
-            <summary>Recording checklist</summary>
-            <ul>
-              <li>30-second hook: what changed since last log</li>
-              <li>1-minute detail: tech highlights for engineers</li>
-              <li>30-second wrap: risks + next milestone</li>
-            </ul>
-          </details>
-        </div>
-      </section>
-
       <section id="log" class="panel log">
         <header>
           <p class="label">Daily Dated Log</p>
@@ -155,8 +128,7 @@
           </p>
         </header>
         <div class="log-controls">
-          <p class="muted">Newest at the top · 200 entries stored · tap below for more</p>
-          <button class="button secondary" id="load-more">Show Older Entries</button>
+          <p class="muted">Newest at the top · 200 entries stored · scroll down for more</p>
         </div>
         <div id="log-list" class="log-list" aria-live="polite"></div>
       </section>
@@ -166,7 +138,6 @@
       <p>&copy; <span id="year"></span> Game of Life · Studio 6x7</p>
       <div class="footer__links">
         <a href="#progress">Progress</a>
-        <a href="#media">Media</a>
         <a href="#log">Logs</a>
         <a href="https://github.com/philipposk/GameOfLife-Site" target="_blank" rel="noopener">GitHub</a>
       </div>
