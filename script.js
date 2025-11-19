@@ -1,5 +1,5 @@
 // Game URL configuration - update this when you deploy your WebGL build
-const GAME_URL = "/game/"; // Change to external URL if hosting separately (e.g., "https://your-game.itch.io/gameoflife")
+const GAME_URL = "/play game/"; // Change to external URL if hosting separately (e.g., "https://your-game.itch.io/gameoflife")
 
 const friendlyFormatter = new Intl.DateTimeFormat("en-GB", {
   day: "2-digit",
