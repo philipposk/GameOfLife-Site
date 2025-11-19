@@ -417,6 +417,12 @@ const updateLoadMoreButton = () => {
 const renderEntries = (count) => {
   if (!logList) return;
   
+  // Remove the old load more button if it exists
+  if (loadMoreBtn && loadMoreBtn.parentNode) {
+    loadMoreBtn.parentNode.removeChild(loadMoreBtn);
+    loadMoreBtn = null;
+  }
+  
   const slice = generatedLog.slice(rendered, rendered + count);
   slice.forEach((entry) => {
     const wrapper = document.createElement("article");
@@ -435,10 +441,13 @@ const renderEntries = (count) => {
   });
 
   rendered += slice.length;
-  updateLoadMoreButton();
+  
+  // Create new load more button after this batch
+  if (rendered < generatedLog.length) {
+    createLoadMoreButton();
+    updateLoadMoreButton();
+  }
 };
 
 renderEntries(INITIAL_BATCH);
-createLoadMoreButton();
-updateLoadMoreButton();
 
