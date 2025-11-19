@@ -87,6 +87,7 @@ a:hover {
 .hero__video {
   max-width: 640px;
   justify-self: end;
+  min-height: 300px;
 }
 
 .video-hint {
